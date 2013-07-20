@@ -1,0 +1,107 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml11/DTD/xhtml-strict.dtd">
+<html>
+<head>
+
+<!-- Blueprint -->
+<link rel='stylesheet' href='{{STATIC_URL}}blueprint/screen.css' type='text/css' media='screen, projection'>
+<link rel='stylesheet' href='{{STATIC_URL}}blueprint/print.css' type='text/css' media='print'>
+
+<!-- jQuery -->
+<script type='text/javascript' src='{{STATIC_URL}}jquery/jquery-1.9.1.min.js'></script>
+<script type='text/javascript' src='{{STATIC_URL}}jquery/jquery-ui-1.9.2.custom.min.js'></script>
+<!-- jQuery Theme -->
+<link type='text/css' href='{{STATIC_URL}}jquery/blitzer/jquery-ui-1.9.2.custom.min.css' rel='stylesheet' />
+
+
+<link rel='stylesheet' href='{{STATIC_URL}}content.css' type='text/css' media='screen'>
+<link rel='stylesheet' href='{{STATIC_URL}}admin.css' type='text/css' media='screen'>
+<link rel='stylesheet' href='{{STATIC_URL}}undodialog.css' type='text/css' media='screen'>
+
+
+
+<!-- Core functions -->
+<script type='text/javascript' src='{{STATIC_URL}}core/loadElement.js'></script>
+<script type='text/javascript' src='{{STATIC_URL}}core/interaction.js'></script>
+<script type='text/javascript' src='{{STATIC_URL}}core/init.js'></script>
+<script type='text/javascript' src='{{STATIC_URL}}core/reset.js'></script>
+<script type='text/javascript' src='{{STATIC_URL}}core/values.js'></script>
+<script type='text/javascript' src='{{STATIC_URL}}core/admin.js'></script>
+
+<!-- crypto -->
+<script type='text/javascript' src='{{STATIC_URL}}crypto/sha1.js'></script>
+
+<!-- On-screen Keyboard -->
+<link href='{{STATIC_URL}}keyboard/keyboard.css' rel='stylesheet'>
+<script src='{{STATIC_URL}}keyboard/jquery.keyboard.js'></script>
+<!-- End On-screen Keyboard -->
+
+<!-- Idle timer -->
+<script src='{{STATIC_URL}}idletimer/jquery.idle-timer.js'></script>
+
+<!-- End Idle timer -->
+<link rel='stylesheet' href='{{STATIC_URL}}jquery/selectable.css' type='text/css' media='screen,print,projection'>
+
+
+<link rel='stylesheet' href='{{STATIC_URL}}buylinedialog.css' type='text/css' media='screen'>
+<link rel='stylesheet' href='{{STATIC_URL}}undodialog.css' type='text/css' media='screen'>
+<link rel='stylesheet' href='{{STATIC_URL}}userdialog.css' type='text/css' media='screen'>
+
+
+</head>
+
+<body>
+
+	{%csrf_token%}
+
+	<script type='text/javascript'>
+		$(function() {
+			admin.setup();
+		});
+	</script>
+
+	<div id="content">
+
+		<div id="topbar">
+			<p class="content">Adminpanel K.A.S.T.</p>
+		</div>
+		<div id="mainbar">
+			<div class="content">
+				<div class="tabs">
+					<ul>
+						<li><a href="#totals_tab">Totals</a></li>
+						<li><a href="#inventory_tab">Inventory</a></li>
+						<li><a href="#user_tab">Users</a></li>
+						<li><a href="#system_user_tab">System users</a></li>
+						<li><a href="#activity_tab">Activities</a></li>
+						<li><a href="#export_tab">Export</a></li>
+						<li><a href="#credit_tab">Credit Check</a></li>
+					</ul>
+					<div id="totals_tab">
+						{% include "admin/totals/totals_tab.html" %}
+					</div>
+					<div id="user_tab">
+						{% include "admin/user/user_tab.html" %}
+					</div>
+					<div id="activity_tab">
+						{% include "admin/activity/activity_tab.html" %}
+					</div>
+					<div id="inventory_tab">
+						{% include "admin/inventory/inventory_tab.html" %}
+					</div>
+					<div id="system_user_tab">
+						{% include "admin/system_user/system_user_tab.html" %}
+					</div>
+					<div id="export_tab">
+						{% include "admin/export/export_tab.html" %}
+					</div>
+					<div id="credit_tab">
+						{% include "admin/credit/credit_tab.html" %}
+					</div>
+				</div>
+			</div>
+
+		</div>
+	</div>
+</body>
+
+</html>

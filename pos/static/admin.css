@@ -1,0 +1,423 @@
+body{
+	background: url("../static/skin_side_up.png") repeat #FFF;
+    height: 100%;
+	font-family: "Verdana";
+}
+
+p{
+	margin:0;
+}
+
+label{
+    height: 29px;
+}
+
+.rightdetail input[type=text], .rightdetail input[type=number], .rightdetail input[type=password], .rightdetail select{
+	margin: 1px;
+	width: 195px;
+    height: 18px;
+}
+
+input[disabled]{
+    background-color: #ddd;
+}
+
+button:disabled{
+    color: #ddd;
+}
+
+.alignright{
+    text-align: right;
+}
+
+.aligncenter{
+    text-align: center;
+}
+.rightdetail .smallfield{
+    display:inline-block;
+    width: 30px !important;
+}
+
+.rightdetail .smallcomp{
+    display: inline-block;
+    width: 120px !important;
+}
+.rightdetail .rightlabel{
+    width:150px;
+    display: inline-block;
+}
+
+thead th{
+    background: none repeat scroll 0 0 #DDD;
+}
+
+tbody tr td{
+    background: none repeat scroll 0 0 #FFF;
+}
+
+td{
+    border-bottom: solid 1px #000;
+}
+
+
+.refreshbutton{
+    background-image: url('../static/refresh.png') !important;
+}
+
+HR{
+	width: 100%;
+	margin-top: 10px;
+	margin-bottom: 10px;
+}
+
+#content{
+    width: 1200px;
+    height: 100%;
+    margin-right: auto;
+    margin-left: auto;
+}
+
+.hidden{
+	display:none;
+}
+.userbutton{
+	text-align: left !important;
+}
+.content{
+	width: 100%;
+	margin: 10px auto 0;
+}
+
+.halfwidebutton{
+    width: 100px;
+    margin: 0;
+}
+
+.widebutton{
+	width: 204px;
+	margin: 0;
+}
+
+#total_clear{
+    width:100%;
+}
+
+.fullwidebutton{
+    width: 100%;
+}
+
+.leftselect{
+	width:200px;
+	height:100%;
+	float:left;
+    overflow-y:scroll;
+}
+
+.rightdetail{
+    width: 920px;
+    float:right;
+    height: 100%;
+	
+}
+
+#user_tabs{
+    border:none;
+}
+
+
+.rightdetail label{
+	width:150px;
+	display:inline-block;
+}
+
+#activityselect p{
+    padding: 3px;
+    width: 90%;
+    text-align: center;
+    font-size: 15px;
+    font-weight: bold;
+}
+
+#activity_tab ul{
+    margin-bottom: 0;
+}
+
+#activity_restrictions_details select, #activity_restrictions_details input{
+    width: 140px;
+}
+
+
+label[for="activate"], label[for="deactivate"]{
+	width: 100px !important; 
+}
+
+#topbar{
+    position: relative;
+    top: 10px;
+}
+
+#mainbar{
+    position: relative;
+    top: 50px;
+    bottom: 0;
+    height: 800px;
+}
+
+.bordered{
+    border: 1px solid #DDD;
+}
+.tabs > div{
+    height: 740px;
+    overflow-y: auto;
+
+}
+.leftpane{
+    width: 380px;
+    float: left;
+    padding-right: 15px;
+}
+
+.rightpane{
+    border-left:1px solid #DDD;
+    width: 375px;
+    float: left;
+    padding-left: 15px;
+}
+
+
+.userbuttonstyle{
+	padding: 2px;
+	list-style: none;
+	width:90%;
+	margin-right:auto;
+	margin-left:auto;
+}
+
+.rightselect{
+	padding: 0;
+	margin: 0;
+}
+
+
+.leftdetail{
+    overflow-y:scroll;
+    width: 940px;
+	height:100%;
+	float:left;
+}
+
+.ui-buttonset{
+	margin:0;
+	padding:0;
+}
+.ui-selected{
+	background: #b20909;
+	color: white;
+}
+
+.changedalert{
+    margin-bottom: -4px;
+}
+
+.numchanged{
+    width: 30px;
+}
+
+.inventory{
+    margin-bottom: 10px;
+}
+
+.inventory .sign{
+    display:inline-block;
+    text-align: center;
+    font-size: 25px;
+    width: 35px;
+    height:35px;
+    background: #aaa transparent;
+    background: rgba(0,0,0,0.1);
+}
+.inventory .desc{
+    display: inline-block;
+    width: 95px;
+    font-size: 15px;
+    margin-left: 15px;
+}
+.inventory .total{
+    display: inline-block;
+    width:30px;
+    font-size: 15px;
+}
+.inventory .detail{
+    padding: 10px;
+
+}
+.inventory .label{
+    display: inline-block;
+    width: 115px;
+}
+.inventory ul{
+    list-style: none;
+    padding:0;
+    margin:0;
+}
+
+.inventory li:before{
+    content: '»';
+    margin-right: 5px;
+}
+
+.invtype_purchase{
+    background-color: #afa;
+}
+
+.invtype_balance{
+    background-color: #ffa;
+}
+
+.invtype_loss{
+    background-color: #faa;
+}
+
+#inventory_balance_note, #inventory_purchase_note{
+    width:100%;
+}
+
+#inventory_current_scan li:nth-child(2n){
+    background: none repeat scroll 0 0 #fee;
+}
+
+#inventory_scan{
+    max-height: 500px;
+    min-height: 300px;
+    overflow-y:scroll;
+}
+
+#inventory_current_scan{
+    list-style: none;
+}
+
+.inventory_description{
+    width: 140px;
+    display: inline-block;
+}
+
+.inventory_cat_description{
+    width: 110px;
+    display: inline-block;
+}
+
+.inventory_amount{
+    width: 30px;
+    display: inline-block;
+}
+
+#inventory_current_scan button, #inventory_current_scan p {
+    height: 30px;
+    vertical-align: middle;
+}
+
+.totaldetails{
+    background-color: #eee;
+    padding: 5px;
+}
+
+#totals_settings{
+    float: left;
+    padding-right: 15px;
+    border-right:1px solid #DDD;
+}
+#total_overview{
+    float: left;
+    padding-left: 15px;
+}
+
+#total_select button{
+    width: 100%;
+}
+
+.totaldetails .desc{
+    display: inline-block;
+    width: 200px;
+}
+
+.totaldetails .nums{
+    display: inline-block;
+    width: 20px;
+}
+
+#totals_settings{
+    width: 320px;
+}
+
+#total_select > select{
+    width: 100%;
+}
+
+#totals_chart{
+    width: 700px;
+    height: 300px;
+}
+#credits_chart{
+    width: 700px;
+    height: 300px;
+}
+
+#credit_import_left button:not(.refreshbutton){
+    width: 100%;
+}
+
+#credit_import_left h3{
+    display:inline-block;
+    padding-right: 20px;
+}
+
+#credit_import_left{
+    float: left;
+    width: 265px;
+    padding: 10px;    
+
+}
+
+#credit_overviews{
+    border-left:1px solid #DDD;
+    padding: 10px;
+    float:left;
+    width: 830px;
+    height: 600px;
+}
+#credit_overviews >div{
+    height: 600px;
+}
+
+#credit_batch_select{
+    width:100%;
+}
+
+hr.half{
+    width:35%;
+    margin-bottom: 5px;
+    clear: none;
+    display: inline-block;
+}
+.centertable th, .centertable td{
+    text-align: center;
+}
+
+.text-center{
+    text-align: center;
+}
+
+.plus{
+    background-position: 0 -13px !important;
+}
+
+.plusminus{
+    display:inline-block;
+    width:13px;
+    height:13px;
+    margin-bottom: -2px;
+}
+
+.help > p{
+    margin-bottom: 10px;
+}

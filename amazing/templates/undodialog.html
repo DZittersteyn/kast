@@ -1,0 +1,40 @@
+<div id='undoDialog'>
+	<span id='undo_userid' class='hidden'>{{user_id}}</span>
+	<span id='undo_user' class='hidden'>{{user_name}}</span>
+
+
+	<ul id='undoDialogPurchaseList'>
+		{% for purchase in purchases %}
+
+			
+			<li id="purchaseli-{{purchase.pk}}"> 
+				{% include "transactionli.html" %}
+			</li>
+
+
+		{% endfor %}
+	</ul>
+	
+	{% if purchases_old %}
+
+		<div id="expandOld" style="display: inline-block; text-align:center; padding-top:10px; padding-bottom:10px; width:510px">
+		<hr /> 
+		Transacties van meer dan 2 uur geleden <div class='plus' id="plusminus" style="background: url({{STATIC_URL}}plusminus.png)"></div>
+		<hr />
+		</div>
+
+
+		<ul id='undoDialogOldPurchaseList' class='hidden'>
+			<p class='textcenter emph'>Transacties die meer dan 2 uur oud zijn kunnen niet ongedaan gemaakt worden. Als je een probleem hebt met een oude transactie kun je contact opnemen met Foetsie@svcover.nl</p>
+			{% for purchase in purchases_old %}
+
+				
+				<li id="purchaseli-{{purchase.pk}}"> 
+					{% include "transactionli.html" %}
+				</li>
+
+
+			{% endfor %}
+		</ul>
+	{% endif %}
+</div>	

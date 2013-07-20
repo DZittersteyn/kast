@@ -1,0 +1,22 @@
+#usertabs, #buyline, #add, #undo, #edituser, hr, #userbuttons p{
+    display:none !important;
+}
+
+#userinfo{
+    margin: 40px 240px;
+    overflow-y: visible !important;
+}
+
+#userinfo > #userbuttons{
+    position:relative !important;
+}
+
+#userinfo > #purchases{
+    top: 210px !important;
+}
+
+#paidby{
+    text-align: center;
+    width: 100%;
+    font-size: 17px;
+}

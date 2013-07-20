@@ -1,0 +1,24 @@
+
+<div id="user_tabs">
+  <ul>
+    <li><a href="#usertabs-1">Data and purchases</a></li>
+    <li><a href="#usertabs-2">Credits</a></li>
+  </ul>
+  <div id="usertabs-1">
+
+    {% include "admin/user/user_options_data.html"%}
+
+  </div>
+  <div id="usertabs-2">
+
+    {% include "admin/user/user_options_debit.html"%}
+
+  </div>
+</div>
+
+<script type='text/javascript'>
+  $(function() {
+      user_tab.user_options.setup();
+      $('#user_tabs').tabs();
+  });
+</script>

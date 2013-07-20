@@ -1,0 +1,120 @@
+/* global */
+body{
+	background: url("swoosh.png") no-repeat scroll center top #3B3B3B;
+	color: white;
+	overflow-y:auto;
+	font-family: "Verdana";
+}
+
+body .admin{
+	background: url("images/ui-bg_diagonals-thick_75_f3d8d8_40x40.png") repeat scroll 50% 50% #F3D8D8;
+}
+
+a{
+	color: white;
+}
+span{
+	font-size:inherit;
+}
+
+.content{
+	background-color: rgb(100,100,100);
+	
+	position:relative;
+	top:-10px;
+	
+	width:950px;
+	margin:auto;
+	padding:10px;
+	border-radius: 5px 5px 5px 5px;
+	overflow-y: hidden;	
+}
+
+#usertabs hr{
+	margin-bottom: 4px; 
+	display: inline-block; 
+	width: 90px
+}
+
+.textcenter{
+	text-align:center;
+}
+
+.emph{
+	font-style: italic;
+}
+
+.filteredlist > label{
+	font-size: 1.2em !important;
+	width:100%;
+	text-align: left;
+	margin-bottom: 5px;
+}
+
+/* generic use */
+
+
+.hidden{
+	display:none;
+}
+
+.textcenter{
+	text-align:center;
+}
+
+.normaltext {
+	font-family:"Verdana";
+	font-size:20px;
+	margin-bottom:15px;
+	height:20px;
+}
+
+HR{
+	margin: 10px 0 10px 0;
+}
+
+
+/* Hacks to make the vertical tabs behave properly */
+
+li.tab.ui-tabs-selected{
+	background: #ddd;
+}
+
+ul.ui-tabs-nav{
+	width: 50px;
+	
+	position:absolute;
+	top: 0px;
+	bottom: 0px;
+
+	overflow-x: hidden;
+	overflow-y: auto;
+}
+
+div#usertabs{
+	padding: 0;
+}
+
+div.ui-tabs-panel{
+	position:absolute;
+	top: 0;
+	bottom: 0;
+	right: 0;
+	left: 55px;
+
+	overflow-y: scroll;
+	overflow-x: hidden;
+}
+
+.adminalert{
+	background: url("./notice-stripe.png") repeat scroll 50% 50% #ffd897;
+}
+
+#add_product{
+	margin-left: 20px;
+	text-align: left;
+}
+#add_product label{
+	display: inline-block;
+	width: 130px;
+}
