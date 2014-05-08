@@ -4,18 +4,22 @@
 		<td class='expandable'>
 			<div>
 				{%load humanize%}
-				<span class='purcdate'> {{purchase.date|naturalday}} @ {{purchase.date|time}} </span><span class='purcdesc'> {{purchase.desc}} </span><img class='purcstatus' id="status_{{purchase.pk}}" 
+				<span class='purcdate'> {{purchase.date|naturalday}} @ {{purchase.date|time}} </span><span class='purcdesc'> {{purchase.desc}} </span><img class='purcstatus' id="status_{{purchase.pk}}"
 					{%if purchase.valid != 1%}
-						src="{{STATIC_URL}}cross_t.png" title="Undone" 
-					{%elif purchase.admin != 0%}
-						src="{{STATIC_URL}}exclaim_t.png" title="By Admin"
-					{%elif purchase.activity.name != "Gewone Verkoop"%}
-						src="{{STATIC_URL}}info_t.png" title="At Activity" 
+						src="{{STATIC_URL}}cross_t.png" title="Undone"
 					{%else%}
-						src="{{STATIC_URL}}check_t.png" title="Normal Sale"
+						{%if purchase.admin != 0%}
+							src="{{STATIC_URL}}exclaim_t.png" title="By Admin"
+						{%else%}
+							{%if purchase.activity.name != "Gewone Verkoop"%}
+								src="{{STATIC_URL}}info_t.png" title="At Activity"
+							{%else%}
+								src="{{STATIC_URL}}check_t.png" title="Normal Sale"
+							{%endif%}
+						{%endif%}
 					{%endif%}
 				/>
-		
+
 			</div>
 			<div class='hidden'>
 				<span class='moreinfo'> Date/Time </span><span>{{purchase.date}} </span> <br />

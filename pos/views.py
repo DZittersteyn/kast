@@ -297,6 +297,7 @@ def new_user(request):
                 name=request.POST['name'],
                 address=request.POST['address'],
                 city=request.POST['city'],
+                age=intrequest.POST['age'],
                 bank_account=request.POST['bank_account'],
                 email=request.POST['email'],
                 barcode=request.POST['barcode'],
@@ -317,6 +318,7 @@ def edit_user(request):
             u.name = request.POST['new_name']
             u.address = request.POST['new_address']
             u.city = request.POST['new_city']
+            u.age = int(request.POST['age'])
             u.bank_account = request.POST['new_bank_account']
             u.email = request.POST['new_email']
             u.barcode = request.POST['new_barcode']
@@ -632,7 +634,7 @@ def admin_system_user_options(request):
 @ajax_required
 def admin_system_user_new(request):
     if request.POST['name'] != '' and request.POST['password'] != '':
-        user = auth.models.User.objects.create_user(username=request.POST['name'], password=request.POST['password'])
+        user = auth.models.User.objects.create_user(username=request.POST['name'], password=request.POST['password'], email='foo@bar.com')
         user.save()
         return HttpResponse(status=200)
     else:

@@ -259,11 +259,8 @@ def filtereduserlist(request):
     beginswith = request.GET['beginswith']
     users = []
     for char in beginswith:
-        upper = char.upper()
-        lower = char.lower()
-        users.extend(User.objects.filter(name__startswith=upper).filter(active=True).filter(active=True))
-        users.extend(User.objects.filter(name__startswith=lower).filter(active=True).filter(active=True))
-
+        # users.extend(User.objects.filter(name__startswith=char.upper()).filter(active=True))
+        users.extend(User.objects.filter(name__startswith=char.lower()).filter(active=True))
     recent_users = []
     old_users = []
     for user in users:
@@ -273,10 +270,10 @@ def filtereduserlist(request):
             old_users.append(user)
         else:
             recent_users.append(user)
-    
+
     old_users = sorted(old_users, key=lambda user: user.name)
     recent_users = sorted(recent_users, key=lambda user: user.name)
-    
+
     return render_to_response("filtereduserlist.html", {'filter': beginswith, 'users': recent_users, 'old_users': old_users})
 
 
@@ -301,6 +298,7 @@ def new_user(request):
                 name=request.POST['name'],
                 address=request.POST['address'],
                 city=request.POST['city'],
+                age=int(request.POST['age']),
                 bank_account=request.POST['bank_account'],
                 email=request.POST['email'],
                 barcode=request.POST['barcode'],
@@ -321,6 +319,7 @@ def edit_user(request):
             u.name = request.POST['new_name']
             u.address = request.POST['new_address']
             u.city = request.POST['new_city']
+            u.age = int(request.POST['new_age'])
             u.bank_account = request.POST['new_bank_account']
             u.email = request.POST['new_email']
             u.barcode = request.POST['new_barcode']
@@ -636,7 +635,7 @@ def admin_system_user_options(request):
 @ajax_required
 def admin_system_user_new(request):
     if request.POST['name'] != '' and request.POST['password'] != '':
-        user = auth.models.User.objects.create_user(username=request.POST['name'], password=request.POST['password'])
+        user = auth.models.User.objects.create_user(username=request.POST['name'], password=request.POST['password'], email='foo@bar.com')
         user.save()
         return HttpResponse(status=200)
     else:

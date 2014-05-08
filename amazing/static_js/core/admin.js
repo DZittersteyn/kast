@@ -15,7 +15,7 @@ admin = {
 };
 
 totals_tab = {
-	
+
 	reload_totals: function(){
 		$.get('totals/list', function(data){
 			$('#totals_settings').html(data);
@@ -128,7 +128,7 @@ user_tab = {
 			$('#userselect').html(data);
 		}).success(function(){
 			$('.userbutton-input').button();
-		
+
 			if($("#filter_inactive_users").is(":checked")){
 				$(".nonactive").addClass("hidden");
 			} else {
@@ -140,7 +140,7 @@ user_tab = {
 			}
 		});
 	},
- 
+
 	user_options : {
 
 		reload_user: function(){
@@ -159,7 +159,7 @@ user_tab = {
 				purchase = user_tab.get_auth();
 				purchase['activity'] = $('#activities').val();
 				purchase['admin'] = 'admin';
-				
+
 				purchase['type'] = 'product';
 				$('.valuefield.product').each(function(){
 					purchase['productID'] = this.id;
@@ -167,7 +167,7 @@ user_tab = {
 					this.value = 0;
 					$.post('user/', purchase);
 				});
-				
+
 				purchase['type'] = 'credit';
 				$('.valuefield.credit').each(function(){
 					purchase['credittype'] = this.id;
@@ -176,7 +176,7 @@ user_tab = {
 					$.post('user/', purchase);
 				});
 			});
-			
+
 			$('#user_data').on('keyup', '.valuefield', function(){
 				var field = $(this);
 
@@ -187,7 +187,7 @@ user_tab = {
 					field.addClass('ui-state-highlight');
 					field.next().removeClass('hidden');
 				}
-			
+
 			});
 
 			$('#setactive').buttonset();
@@ -241,6 +241,7 @@ user_tab = {
 				user['new_name']			= $('#name').val();
 				user['new_address']			= $('#address').val();
 				user['new_city']			= $('#city').val();
+				user['new_age']				= $('#age').val();
 				user['new_bank_account']	= $('#bank_account').val();
 				user['new_email']			= $('#email').val();
 				user['new_barcode']			= $('#barcode').val();
@@ -515,7 +516,7 @@ inventory_tab = {
 		});
 
 		$('#inventory_tab').on('click', '.inventorydelete', function(event){
-			
+
 			event.stopPropagation();
 			var match = $(this).prop('id').split('_');
 			var type = match[1];
@@ -738,7 +739,7 @@ inventory_tab = {
 
 system_user_tab = {
 	setup: function(){
-		
+
 
 		$('#system_user_tab').on('click', '.systemuserbutton-input', function(){
 			system_user_tab.system_user_options.load($(this).prop('id').split('-')[1]);

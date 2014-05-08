@@ -1,18 +1,7 @@
 user_dialog = {
 	email_address: function(email) {
-		var pattern = new RegExp(/^[+a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]+$/i);
+		var pattern = new RegExp(/^.*@.*\..*$/i);
 		return pattern.test(email);
-	},
-
-	bank_account: function(bank_account){
-		/*TODO: digit check. */
-		var pattern = new RegExp(/^[0-9]+$/i);
-		return pattern.test(bank_account);
-	},
-
-	name: function(name){
-		var pattern = new RegExp(/^[a-zA-Z].*[ ].*/i);
-		return pattern.test(name);
 	},
 
 	check_fields: function(){
@@ -20,10 +9,10 @@ user_dialog = {
 		valid = user_dialog.set_field_valid($('#edit_email').val() === "" || user_dialog.email_address($('#edit_email').val()), '#edit_email')
 					&& valid;
 
-		valid = user_dialog.set_field_valid(user_dialog.bank_account($('#edit_bank_account').val()), '#edit_bank_account')
+		valid = user_dialog.set_field_valid($('#edit_bank_account').val() !== "", '#edit_bank_account')
 					&& valid;
 
-		valid = user_dialog.set_field_valid(user_dialog.name($('#edit_name').val()), '#edit_name')
+		valid = user_dialog.set_field_valid($('#edit_name').val() !== "", '#edit_name')
 					&& valid;
 
 		valid = user_dialog.set_field_valid($('#edit_address').val() !== "", '#edit_address')
@@ -33,6 +22,9 @@ user_dialog = {
 					&& valid;
 
 		valid = user_dialog.set_field_valid($('#edit_city').val() !== "", '#edit_city')
+					&& valid;
+
+		valid = user_dialog.set_field_valid($('#edit_age').val() !== "", '#edit_age')
 					&& valid;
 
 		return valid;
@@ -67,6 +59,7 @@ user_dialog = {
 		$('#edit_name').val(user ? user.name : "");
 		$('#edit_address').val(user ? user.address : "");
 		$('#edit_city').val(user ? user.city : "");
+		$('#edit_age').val(user ? user.age : "");
 		$('#edit_bank_account').val(user ? user.bank_account : "");
 		$('#edit_email').val(user ? user.email : "");
 		$('#edit_barcode').val(user ? user.barcode : "");
@@ -116,6 +109,7 @@ new_user_dialog = {
 									'name': $('#edit_name').val(),
 									'address': $('#edit_address').val(),
 									'city': $('#edit_city').val(),
+									'age': $('#edit_age').val(),
 									'bank_account': $('#edit_bank_account').val(),
 									'email': $('#edit_email').val(),
 									'barcode': $('#edit_barcode').val(),
@@ -184,6 +178,7 @@ edit_user_dialog = {
 							'new_name': $('#edit_name').val(),
 							'new_address': $('#edit_address').val(),
 							'new_city': $('#edit_city').val(),
+							'new_age': $('#edit_age').val(),
 							'new_bank_account': $('#edit_bank_account').val(),
 							'new_email': $('#edit_email').val(),
 							'new_barcode': $('#edit_barcode').val(),
@@ -300,11 +295,11 @@ undo_dialog = {
 					}
 				}]
 			});
-			
+
 			$('#undoDialog').dialog('open').removeClass('hidden');
 
 		});
-	
+
 	},
 
 	unload: function(){
@@ -333,7 +328,7 @@ buy_line_dialog = {
 
 			$("#txtNumLines").html($('#numLines').slider('value'));
 			$("#price").html(($('#numLines').slider('value') * $("#pieceprice").html()).toFixed(2));
-			
+
 
 			$('#buyLine_dialog').dialog({
 				modal: true,

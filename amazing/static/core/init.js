@@ -16,7 +16,7 @@ site_user = {
 			$('#selecting_user_id').html($(src).attr("id").split('-')[1]);
 		}
 	},
-	
+
 	selecting_user_id: function(src){
 		return $('#selecting_user_id').html();
 	},
@@ -47,7 +47,7 @@ site_gui = {
 		$('.ui-selected').removeClass('ui-selected');
 	},
 
-	set_user_spec_buttons: function(enable){
+	set_user_spec_buttons: function(enable, user_age){
 		var enableString = 'disable';
 		if(enable){
 			enableString = 'enable';
@@ -56,6 +56,10 @@ site_gui = {
 		$('#undo').button(enableString);
 		$('#edituser').button(enableString);
 		$('.productbutton').button(enableString);
+		console.log("user age: " + user_age)
+		if (user_age && user_age < 18){
+			$('#BEER').button('disable')
+		}
 	},
 
 	set_gui_user: function(user, settab){
@@ -80,7 +84,7 @@ site_gui = {
 				site_gui.init_expandables();
 			});
 
-			site_gui.set_user_spec_buttons(true);
+			site_gui.set_user_spec_buttons(true, user.age);
 		}
 	},
 
