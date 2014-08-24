@@ -355,8 +355,8 @@ def get_user_by_barcode(request):
         if len(u) > 1:
             u = [
                 us for us in u
-                if not us.get_latest_purchase_date()
-                or us.get_latest_purchase_date() < datetime.datetime.now() - datetime.timedelta(days=90)
+                if us.get_latest_purchase_date()
+                and us.get_latest_purchase_date() > datetime.datetime.now() - datetime.timedelta(days=90)
             ]
 
         if len(u) == 0:
