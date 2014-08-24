@@ -1,7 +1,8 @@
 user_dialog = {
-	email_address: function(email) {
-		var pattern = new RegExp(/^.*@.*\..*$/i);
-		return pattern.test(email);
+
+	bank_account: function(bank_account) {
+		var pattern = new RegExp('\^NL\d{2}[A-Z]{4}\d{10}\$');
+		return pattern.test(bank_account);
 	},
 
 	check_fields: function(){
@@ -9,7 +10,8 @@ user_dialog = {
 		valid = user_dialog.set_field_valid($('#edit_email').val().indexOf('@') != -1, '#edit_email')
 					&& valid;
 
-		valid = user_dialog.set_field_valid($('#edit_bank_account').val() !== "", '#edit_bank_account')
+		$('#edit_bank_account').val($('#edit_bank_account').val().toUpperCase());
+		valid = user_dialog.set_field_valid(user_dialog.bank_account($('#edit_bank_account').val()), '#edit_bank_account')
 					&& valid;
 
 		valid = user_dialog.set_field_valid($('#edit_name').val() !== "", '#edit_name')
