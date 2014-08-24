@@ -41,7 +41,7 @@
 <script src='{{STATIC_URL}}idletimer/jquery.idle-timer.js'></script>
 <!-- End Idle timer -->
 
-<!-- Init the user selection screen --> 
+<!-- Init the user selection screen -->
 <link rel='stylesheet' href='{{STATIC_URL}}jquery/verticaltabs.css' type='text/css' media='screen,print,projection'>
 
 
@@ -49,7 +49,7 @@
 	$(function() {
 		var free = {% if activity.free %} true; {% else %} false; {% endif %}
 		site_gui.setup(free);
-		$('#add').button('enable'); 
+		$('#add').button('enable');
 		// workaround for a firefox bug, which would disable the new user button
 		// see http://stackoverflow.com/questions/2719044/jquery-ui-button-gets-disabled-on-refresh
 	});
@@ -62,7 +62,7 @@
 
 {% if activity.free %}
 <link rel='stylesheet' href='{{STATIC_URL}}freepos.css' type='text/css' media='screen'>
-<script type='text/javascript'> 
+<script type='text/javascript'>
 	$(function(){$('#mainbar .content').prepend('<p id="paidby">Deze activiteit wordt betaald door de {{activity.responsible}}!</p>');	});
 </script>
 
@@ -85,8 +85,10 @@
 	<p class='content'>{{admin|yesno:'LOGGED IN AS ADMIN,K.A.S.T.'}} - <span id='activity'>{{activity.name}}</span></p>
 	<script type='text/javascript'>
 		activity_id = {{activity.id}}
-		activity_free = {% if activity.free %} true; {% else %} false; {% endif %}
-		system_admin = {% if admin %} true; {% else %} false; {% endif %}
+		activity_free = {% if activity.free %} true {% else %} false {% endif %};
+		system_admin = {% if admin %} true {% else %} false {% endif %};
+		use_osk = {% if use_osk %} true {% else %} false {% endif %};
+		use_debit = {% if use_debit %} true {% else %} false {% endif %};
 	</script>
 </div>
 
@@ -96,7 +98,7 @@
 		<div id='usertabs'>
 
 		</div>
-		
+
 			{% if activity.free %}
 			<ul id='free_left'>
 			</ul>
@@ -110,23 +112,23 @@
 				<p class='normaltext span-2'>User: </p><p id='username' class='normaltext span-10 last'> </p>
 				<p class='normaltext span-2'>Credit: </p><p id='credit' class='normaltext span-10 last'> </p>
 
-				<button id='buyline' class='userbutton span-3'>Kruisjes kopen</button>
-				<button id='undo' class='userbutton span-3'>Ongedaan maken</button>
-				<button id='edituser' class='userbutton span-3'>Wijzig gebruiker</button>
-				<button id='add' class='userbutton span-3 last'>Nieuwe gebruiker</button>
-				
+				<button id='buyline' class='userbutton span-3'> {% if use_debit %}Buy Credits{% else %} Can't add credits {% endif %}</button>
+				<button id='undo' class='userbutton span-3'>Undo</button>
+				<button id='edituser' class='userbutton span-3'>Change user</button>
+				<button id='add' class='userbutton span-3 last'>New user</button>
+
 				<hr />
 
-				<button id='CANDYBIG' class='productbutton span-6'> Groot Snoep <br /> (&le; 2 stuks) </button>
-				<button id='CANDYSMALL' class='productbutton span-6 last'> Klein Snoep <br /> (&gt; 2 stuks) </button>
+				<button id='CANDYBIG' class='productbutton span-6'> Candy (large) </button>
+				<button id='CANDYSMALL' class='productbutton span-6 last'> Candy (small) </button>
 
-				<button id='BEER' class='productbutton span-4'> Bier </button>
-				<button id='CAN' class='productbutton span-4'> Blikje of <br />PET-flesje </button>
-				<button id='SOUP' class='productbutton span-4 last'> Soep </button>
+				<button id='BEER' class='productbutton span-4'> Beer </button>
+				<button id='CAN' class='productbutton span-4'> Soda </button>
+				<button id='SOUP' class='productbutton span-4 last'> Soup </button>
 
-				<button id='BREAD' class='productbutton span-4'>Broodje met <br /> Beleg</button>
-				<button id='SAUSAGE' class='productbutton span-4'>Broodje met <br /> Rookworst</button>
-				<button id='BAPAO' class='productbutton span-4 last'>Broodje<br />Bapao</button>
+				<button id='BREAD' class='productbutton span-4'>Bread with <br> spread </button>
+				<button id='SAUSAGE' class='productbutton span-4'>Bread with <br> Sausage </button>
+				<button id='BAPAO' class='productbutton span-4 last'> Bapao </button>
 
 			</div>
 
@@ -139,7 +141,7 @@
 
 <div id='bottombar'>
 	<div class='content'>
-		<p>K.A.S.T.: Automatische StreepjesTeller, by Dirk Zittersteyn. <a href='logout.html'>Logout {{mainuser}}</a>, <a href='admin.html'>Admin screen</a></p>	
+		<p>K.A.S.T.: Automatische StreepjesTeller, by Dirk Zittersteyn. <a href='logout.html'>Logout {{mainuser}}</a>, <a href='admin.html'>Admin screen</a></p>
 	</div>
 </div>
 </body>

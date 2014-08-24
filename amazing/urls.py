@@ -38,7 +38,7 @@ urlpatterns = patterns('amazing.views',
 
     # ugh, this is getting a bit nasty, so:
     # TODO: Clean up URL.py structure, at least separate admin/ etc.
-    # and for next time: USE NAMED URLS! How do you keep forgetting DRY. 
+    # and for next time: USE NAMED URLS! How do you keep forgetting DRY.
 
     url(r'^admin.html$',            'admin'),
 
@@ -84,4 +84,6 @@ urlpatterns = patterns('amazing.views',
     url(r'^credit/invalidate$',     'admin_credit_invalidate'),
     url(r'^credit/batch/list$',     'admin_credit_batch_list'),
     url(r'^credit/batch/$',         'admin_credit_batch'),
+
+    url(r'^system/settings$',       'admin_system_settings'),
 )

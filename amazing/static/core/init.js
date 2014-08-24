@@ -52,13 +52,17 @@ site_gui = {
 		if(enable){
 			enableString = 'enable';
 		}
-		$('#buyline').button(enableString);
+		if(use_debit){
+			$('#buyline').button(enableString);
+		}
 		$('#undo').button(enableString);
 		$('#edituser').button(enableString);
 		$('.productbutton').button(enableString);
-		console.log("user age: " + user_age)
 		if (user_age && user_age < 18){
-			$('#BEER').button('disable')
+			$('#BEER').button('disable');
+			$('#BEER').html('Beer disabled, you\'re underaged');
+		} else {
+			$('#BEER').html("Beer");
 		}
 	},
 
@@ -207,6 +211,9 @@ site_gui = {
 	},
 
 	init_on_screen_keyboards: function(){
+		if (!use_osk) {
+			return;
+		}
 		$(".osk_norm").keyboard({
 			layout: "custom",
 			openOn: "click",

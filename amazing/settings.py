@@ -11,7 +11,7 @@ MANAGERS = ADMINS
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.mysql',  # Add 'postgresql_psycopg2', 'postgresql', 'mysql', 'sqlite3' or 'oracle'.
+        'ENGINE': 'django.db.backends.sqlite3',  # Add 'postgresql_psycopg2', 'postgresql', 'mysql', 'sqlite3' or 'oracle'.
         'NAME': 'kast',                      # Or path to database file if using sqlite3.
         'USER': 'kast',                 # Not used with sqlite3.
         'PASSWORD': 'afMhrMSJryKdc8U2',             # Not used with sqlite3.
@@ -23,7 +23,7 @@ DATABASES = {
 # Local time zone for this installation. Choices can be found here:
 # http://en.wikipedia.org/wiki/List_of_tz_zones_by_name
 # although not all choices may be available on all operating systems.
-# On Unix systems, a value of None will cause Django to use the same
+# On Unix systems, a value of None will ca use Django to use the same
 # timezone as the operating system.
 # If running in a Windows environment this must be set to the same as your
 # system time zone.
@@ -85,7 +85,7 @@ TEMPLATE_CONTEXT_PROCESSORS = (
 ROOT_URLCONF = 'amazing.urls'
 
 TEMPLATE_DIRS = (
-    '/home/cover/overig/kast/Amazing/amazing/templates',
+    '/Users/dirk/Documents/kast/amazing/templates',
 )
 
 LOGIN_URL = 'login.html'

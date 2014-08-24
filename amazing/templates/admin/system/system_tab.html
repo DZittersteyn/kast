@@ -1,0 +1,38 @@
+
+<div id='system_settings'>
+    <form id='system_settings_form'>
+        <input type='checkbox' id='enable_debit_toggle' checked='checked'>
+            <label class="userbuttonstyle" for='enable_debit_toggle'>Enable Debits (Incass-O-matic & printing)</label>
+        </input>
+        <br>
+        <input type='checkbox' id='enable_osk_toggle' checked='checked'>
+            <label class="userbuttonstyle" for='enable_osk_toggle'>Enable On-screen-keyboard</label>
+        </input>
+
+        <br>
+        <input id="submit_system_settings" type="submit" value="Save">
+        <img src="{{STATIC_URL}}exclaim.png" id="system_settings_save" class='hidden'>
+    </form>
+
+    <script type="text/javascript">
+
+        $('#system_settings_form').on('change', '#enable_osk_toggle, #enable_debit_toggle', function(){
+            $('#system_settings_save').show();
+        });
+
+
+        $("#submit_system_settings").button();
+
+        $('#system_settings_form').submit(function(e){
+            e.preventDefault();
+            var settings = {
+                enable_osk_toggle: $('#enable_osk_toggle').is(':checked'),
+                enable_debit_toggle: $('#enable_debit_toggle').is(':checked')
+            }
+            $.post('system/settings', settings, function(){
+                $('#system_settings_save').hide();
+            });
+        });
+    </script>
+</div>
+

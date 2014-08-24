@@ -82,8 +82,21 @@ def logout(request):
 
 @login_required
 def index(request):
-    return render_to_response("userselect.html",
-                              {'activity': Activity.get_active(), 'mainuser': request.user.username, 'admin': request.user.is_staff}, context_instance=RequestContext(request))
+    try:
+        ss = System_settings.objects.get(pk=1)
+        use_osk = ss.osk
+        use_debit = ss.debits
+    except System_settings.DoesNotExist:
+        use_osk = True
+        use_debit = True
+
+    return render_to_response("userselect.html", {
+        'activity': Activity.get_active(),
+        'mainuser': request.user.username,
+        'admin': request.user.is_staff,
+        'use_osk': use_osk,
+        'use_debit': use_debit,
+    }, context_instance=RequestContext(request))
 
 
 def spinner(request):
@@ -1245,3 +1258,18 @@ def admin_credit_invalidate(request):
     resp = {'debit': request.POST['debit'], 'valid': 'false' if request.POST['valid'] == 'true' else 'true'}
     resp['textstatus'] = 'Make invalid' if resp['valid'] == 'false' else 'Make valid'
     return HttpResponse(status=200, content=json.dumps(resp))
+
+
+@ajax_required
+@staff_member_required
+def admin_system_settings(request):
+    if request.method == 'POST':
+        try:
+            ss = System_settings.objects.get(pk=1)
+        except System_settings.DoesNotExist:
+            ss = System_settings()
+
+        ss.osk = request.POST['enable_osk_toggle'] == 'true'
+        ss.debits = request.POST['enable_debit_toggle'] == 'true'
+        ss.save()
+    return HttpResponse(status=200)

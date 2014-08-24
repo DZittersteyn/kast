@@ -321,3 +321,7 @@ class Signed_debit(models.Model):
     valid = models.BooleanField(default=True)
     purchase = models.ForeignKey(Purchase)
     debit_id = models.IntegerField()
+
+class System_settings(models.Model):
+    osk = models.BooleanField(default=True)
+    debits = models.BooleanField(default=True)
