@@ -6,7 +6,7 @@ user_dialog = {
 
 	check_fields: function(){
 		var valid = true;
-		valid = user_dialog.set_field_valid($('#edit_email').val() === "" || user_dialog.email_address($('#edit_email').val()), '#edit_email')
+		valid = user_dialog.set_field_valid($('#edit_email').val().indexOf('@') != -1, '#edit_email')
 					&& valid;
 
 		valid = user_dialog.set_field_valid($('#edit_bank_account').val() !== "", '#edit_bank_account')
@@ -92,15 +92,15 @@ new_user_dialog = {
 				modal:true,
 				autoOpen: false,
 					minWidth: 740,
-					title: 'Nieuwe gebruiker',
+					title: 'New User',
 					buttons: [{
-						text: "Annuleer",
+						text: "Cancel",
 						click: function(){
 							new_user_dialog.unload();
 						}
 					},
 					{
-						text: "Maak aan",
+						text: "Create",
 						click: function(){
 							if(user_dialog.check_fields()){
 								var passcode = $('#has_pin').prop("checked")?CryptoJS.SHA1($('#edit_pin').val()).toString():"";
@@ -157,16 +157,16 @@ edit_user_dialog = {
 			modal: true,
 			autoOpen: false,
 			minWidth: 740,
-			title: 'Wijzig gebruiker',
+			title: 'Edit User',
 			buttons: [
 			{
-				text: "Annuleer",
+				text: "Cancel",
 				click: function(){
 					edit_user_dialog.unload();
 				}
 			},
 			{
-				text: "Sla op",
+				text: "Save",
 				click: function(){
 					if(user_dialog.check_fields()){
 						$.post('user/edit', {

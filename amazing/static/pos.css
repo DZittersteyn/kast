@@ -19,20 +19,20 @@ span{
 
 .content{
 	background-color: rgb(100,100,100);
-	
+
 	position:relative;
 	top:-10px;
-	
+
 	width:950px;
 	margin:auto;
 	padding:10px;
 	border-radius: 5px 5px 5px 5px;
-	overflow-y: hidden;	
+	overflow-y: hidden;
 }
 
 #usertabs hr{
-	margin-bottom: 4px; 
-	display: inline-block; 
+	margin-bottom: 4px;
+	display: inline-block;
 	width: 90px
 }
 
@@ -66,7 +66,7 @@ span{
 	font-family:"Verdana";
 	font-size:20px;
 	margin-bottom:15px;
-	height:20px;
+	height:3ex;
 }
 
 HR{
@@ -82,7 +82,7 @@ li.tab.ui-tabs-selected{
 
 ul.ui-tabs-nav{
 	width: 50px;
-	
+
 	position:absolute;
 	top: 0px;
 	bottom: 0px;
