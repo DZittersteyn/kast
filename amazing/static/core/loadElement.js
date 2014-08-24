@@ -1,7 +1,7 @@
 user_dialog = {
 
 	bank_account: function(bank_account) {
-		var pattern = new RegExp('\^NL\d{2}[A-Z]{4}\d{10}\$');
+		var pattern = new RegExp(/^NL\d{2}[A-Z]{4}\d{10}$/);
 		return pattern.test(bank_account);
 	},
 

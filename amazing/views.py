@@ -351,18 +351,26 @@ def edit_user(request):
 @ajax_required
 def get_user_by_barcode(request):
     if 'barcode' in request.GET:
-        try:
-            u = User.objects.get(barcode=request.GET['barcode'])
-        except User.DoesNotExist:
+        u = User.objects.filter(active=True).filter(barcode=request.GET['barcode'])
+        if len(u) > 1:
+            u = [
+                us for us in u
+                if not us.get_latest_purchase_date()
+                or us.get_latest_purchase_date() < datetime.datetime.now() - datetime.timedelta(days=90)
+            ]
+
+        if len(u) == 0:
             return HttpResponse(status=404, content="user does not exist")
-        except User.MultipleObjectsReturned:
-            users = User.objects.filter(barcode=request.GET['barcode'])
-            return HttpResponse(status=409, content="Multiple users have the same barcode! Offending users: " + ', '.join([us.name for us in users]))
+        if len(u) > 1:
+            return HttpResponse(status=409, content="Multiple users have the same barcode! Offending users: " + ', '.join([us.name for us in u]))
+        u = u[0]
         request.GET = request.GET.copy()
         request.GET['user'] = u.pk
         return user(request)
     else:
         return HttpResponse(status=400, content="no barcode submitted")
+
+
 
 
 @user_auth_required
